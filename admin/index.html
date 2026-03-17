@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --bg: #F5F5F5;
+      --text: #333333;
+      --text-sub: #888888;
+      --rule: #E0E0E0;
+      --surface: #EBEBEB;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+        "Noto Sans JP", "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    [data-theme="dark"] {
+      --bg: #111111;
+      --text: #E0E0E0;
+      --text-sub: #777777;
+      --rule: #2A2A2A;
+      --surface: #1A1A1A;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 24px 120px;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 56px;
+    }
+    .header h1 {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .theme-toggle {
+      appearance: none;
+      border: none;
+      background: none;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+    }
+    .theme-toggle__icon {
+      display: block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid var(--text);
+      transition: background 0.3s;
+    }
+    [data-theme="dark"] .theme-toggle__icon {
+      background: var(--text);
+    }
+
+    /* ── Sections ── */
+    .cms-section {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .cms-section:last-of-type {
+      border-bottom: none;
+    }
+    .cms-section h2 {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-bottom: 24px;
+    }
+
+    /* ── Form elements ── */
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--text-sub);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="url"],
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 10px 12px;
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus {
+      border-color: var(--text-sub);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.8;
+    }
+    .field {
+      margin-bottom: 16px;
+    }
+    .field-row {
+      display: flex;
+      gap: 12px;
+    }
+    .field-row .field {
+      flex: 1;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn:hover {
+      border-color: var(--text-sub);
+    }
+    .btn--primary {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+    .btn--primary:hover {
+      opacity: 0.85;
+    }
+    .btn--danger {
+      color: #c44;
+      border-color: #c44;
+    }
+    .btn--danger:hover {
+      background: #c44;
+      color: #fff;
+    }
+    .btn--sm {
+      padding: 4px 10px;
+      font-size: 0.75rem;
+    }
+
+    /* ── Repeater items ── */
+    .repeater-item {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .repeater-item .item-actions {
+      display: flex;
+      gap: 6px;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
+    /* ── Action bar ── */
+    .action-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-top: 1px solid var(--rule);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      z-index: 20;
+    }
+
+    /* ── Status toast ── */
+    .status-toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--text);
+      color: var(--bg);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      padding: 10px 24px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 30;
+    }
+    .status-toast.visible {
+      opacity: 1;
+    }
+
+    /* ── File input ── */
+    input[type="file"] {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--text-sub);
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- Header -->
+  <div class="header">
+    <h1>Content Manager</h1>
+    <button class="theme-toggle" type="button" aria-label="Toggle theme">
+      <span class="theme-toggle__icon"></span>
+    </button>
+  </div>
+
+  <!-- Auth -->
+  <div class="cms-section">
+    <h2>Authentication</h2>
+    <div class="field">
+      <label for="gh-token">GitHub Token</label>
+      <input type="password" id="gh-token" placeholder="ghp_...">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="repo-owner">Owner</label>
+        <input type="text" id="repo-owner" value="Kumakichi-PUG">
+      </div>
+      <div class="field">
+        <label for="repo-name">Repository</label>
+        <input type="text" id="repo-name" value="Kumakichi-PUG.github.io">
+      </div>
+    </div>
+    <button class="btn" id="btn-connect">Connect</button>
+  </div>
+
+  <!-- Hero -->
+  <div class="cms-section">
+    <h2>Hero</h2>
+    <div class="field">
+      <label for="hero-name-en">Name (EN)</label>
+      <input type="text" id="hero-name-en">
+    </div>
+    <div class="field">
+      <label for="hero-name-ja">Name (JA)</label>
+      <input type="text" id="hero-name-ja">
+    </div>
+    <div class="field">
+      <label for="hero-title-en">Title (EN)</label>
+      <input type="text" id="hero-title-en">
+    </div>
+  </div>
+
+  <!-- About -->
+  <div class="cms-section">
+    <h2>About</h2>
+    <div class="field">
+      <label for="about-ja">Japanese (paragraphs separated by blank lines)</label>
+      <textarea id="about-ja" rows="8"></textarea>
+    </div>
+    <div class="field">
+      <label for="about-en">English (paragraphs separated by blank lines)</label>
+      <textarea id="about-en" rows="8"></textarea>
+    </div>
+  </div>
+
+  <!-- Works -->
+  <div class="cms-section">
+    <h2>Works</h2>
+    <div id="works-container"></div>
+    <button class="btn" id="btn-add-work">+ Add Work</button>
+  </div>
+
+  <!-- Career -->
+  <div class="cms-section">
+    <h2>Career</h2>
+    <div id="career-container"></div>
+    <button class="btn" id="btn-add-career">+ Add Entry</button>
+  </div>
+
+  <!-- Note -->
+  <div class="cms-section">
+    <h2>Note</h2>
+    <div class="field">
+      <label for="note-url">URL</label>
+      <input type="url" id="note-url">
+    </div>
+    <div class="field">
+      <label for="note-label">Label</label>
+      <input type="text" id="note-label">
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="cms-section">
+    <h2>Contact</h2>
+    <div class="field">
+      <label for="contact-email">Email</label>
+      <input type="email" id="contact-email">
+    </div>
+    <h3 style="font-size:0.75rem;font-family:var(--font-mono);color:var(--text-sub);margin:20px 0 12px;letter-spacing:0.04em;">Links</h3>
+    <div id="links-container"></div>
+    <button class="btn" id="btn-add-link">+ Add Link</button>
+  </div>
+</div>
+
+<!-- Action bar -->
+<div class="action-bar">
+  <button class="btn" id="btn-preview">Preview</button>
+  <button class="btn btn--primary" id="btn-save">Save &amp; Push</button>
+</div>
+
+<!-- Status toast -->
+<div class="status-toast" id="status-toast"></div>
+
+<script>
+  /* ── Theme toggle ── */
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  })();
+
+  /* ── Status toast ── */
+  function showStatus(msg) {
+    const el = document.getElementById('status-toast');
+    el.textContent = msg;
+    el.classList.add('visible');
+    setTimeout(() => el.classList.remove('visible'), 3000);
+  }
+
+  /* ── Auth ── */
+  const tokenInput = document.getElementById('gh-token');
+  const storedToken = localStorage.getItem('gh_token');
+  if (storedToken) tokenInput.value = storedToken;
+
+  document.getElementById('btn-connect').addEventListener('click', async () => {
+    const token = tokenInput.value.trim();
+    if (!token) { showStatus('Token is required'); return; }
+    localStorage.setItem('gh_token', token);
+    try {
+      const res = await fetch('https://api.github.com/user', {
+        headers: { 'Authorization': 'token ' + token }
+      });
+      if (res.ok) {
+        const user = await res.json();
+        showStatus('Connected as ' + user.login);
+        loadContent();
+      } else {
+        showStatus('Auth failed');
+      }
+    } catch (e) {
+      showStatus('Connection error');
+    }
+  });
+
+  /* ── Work item template ── */
+  function createWorkItem(work) {
+    const div = document.createElement('div');
+    div.className = 'repeater-item';
+    div.innerHTML = `
+      <div class="field">
+        <label>Title</label>
+        <input type="text" class="work-title" value="${esc(work.title || '')}">
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <input type="text" class="work-category" value="${esc(work.category || '')}">
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <textarea class="work-desc" rows="2">${esc(work.description || '')}</textarea>
+      </div>
+      <div class="field">
+        <label>Image${work.image ? ' (current: ' + esc(work.image) + ')' : ''}</label>
+        <input type="file" class="work-image" accept="image/*">
+        <input type="hidden" class="work-image-val" value="${esc(work.image || '')}">
+      </div>
+      <div class="item-actions">
+        <button class="btn btn--sm btn-move-up" title="Move up">&#9650;</button>
+        <button class="btn btn--sm btn-move-down" title="Move down">&#9660;</button>
+        <button class="btn btn--sm btn--danger btn-remove-work">Remove</button>
+      </div>
+    `;
+
+    // File upload handler
+    div.querySelector('.work-image').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      showStatus('Uploading ' + file.name + '...');
+      const path = await uploadImage(file);
+      if (path) {
+        div.querySelector('.work-image-val').value = file.name;
+        div.querySelector('label').textContent = 'Image (current: ' + file.name + ')';
+        showStatus('Uploaded ' + file.name);
+      }
+    });
+
+    // Move up
+    div.querySelector('.btn-move-up').addEventListener('click', () => {
+      const container = div.parentNode;
+      const prev = div.previousElementSibling;
+      if (prev) container.insertBefore(div, prev);
+    });
+
+    // Move down
+    div.querySelector('.btn-move-down').addEventListener('click', () => {
+      const container = div.parentNode;
+      const next = div.nextElementSibling;
+      if (next) container.insertBefore(next, div);
+    });
+
+    // Remove
+    div.querySelector('.btn-remove-work').addEventListener('click', () => {
+      div.remove();
+    });
+
+    return div;
+  }
+
+  /* ── Career item template ── */
+  function createCareerItem(entry) {
+    const div = document.createElement('div');
+    div.className = 'repeater-item';
+    div.innerHTML = `
+      <div class="field-row">
+        <div class="field" style="flex:0 0 100px">
+          <label>Year</label>
+          <input type="text" class="career-year" value="${esc(entry.year || '')}">
+        </div>
+        <div class="field">
+          <label>Text</label>
+          <input type="text" class="career-text" value="${esc(entry.text || '')}">
+        </div>
+      </div>
+      <div class="item-actions">
+        <button class="btn btn--sm btn--danger btn-remove-career">Remove</button>
+      </div>
+    `;
+    div.querySelector('.btn-remove-career').addEventListener('click', () => div.remove());
+    return div;
+  }
+
+  /* ── Link item template ── */
+  function createLinkItem(link) {
+    const div = document.createElement('div');
+    div.className = 'repeater-item';
+    div.innerHTML = `
+      <div class="field-row">
+        <div class="field">
+          <label>Label</label>
+          <input type="text" class="link-label" value="${esc(link.label || '')}">
+        </div>
+        <div class="field">
+          <label>URL</label>
+          <input type="url" class="link-url" value="${esc(link.url || '')}">
+        </div>
+      </div>
+      <div class="item-actions">
+        <button class="btn btn--sm btn--danger btn-remove-link">Remove</button>
+      </div>
+    `;
+    div.querySelector('.btn-remove-link').addEventListener('click', () => div.remove());
+    return div;
+  }
+
+  /* ── Escape HTML helper ── */
+  function esc(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML.replace(/"/g, '&quot;');
+  }
+
+  /* ── Add buttons ── */
+  document.getElementById('btn-add-work').addEventListener('click', () => {
+    document.getElementById('works-container').appendChild(createWorkItem({}));
+  });
+  document.getElementById('btn-add-career').addEventListener('click', () => {
+    document.getElementById('career-container').appendChild(createCareerItem({}));
+  });
+  document.getElementById('btn-add-link').addEventListener('click', () => {
+    document.getElementById('links-container').appendChild(createLinkItem({}));
+  });
+
+  /* ── Load content from repo ── */
+  async function loadContent() {
+    const token = localStorage.getItem('gh_token');
+    const owner = document.getElementById('repo-owner').value;
+    const repo = document.getElementById('repo-name').value;
+
+    try {
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/content.json`, {
+        headers: token ? { 'Authorization': 'token ' + token } : {}
+      });
+      if (!res.ok) { showStatus('Could not load content.json'); return; }
+      const fileData = await res.json();
+      const data = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+      populateForm(data);
+      showStatus('Content loaded');
+    } catch (e) {
+      // Fallback: try fetching locally
+      try {
+        const res = await fetch('../content.json');
+        const data = await res.json();
+        populateForm(data);
+        showStatus('Content loaded (local)');
+      } catch (e2) {
+        showStatus('Failed to load content');
+      }
+    }
+  }
+
+  /* ── Populate form from data ── */
+  function populateForm(data) {
+    // Hero
+    document.getElementById('hero-name-en').value = data.hero.name_en || '';
+    document.getElementById('hero-name-ja').value = data.hero.name_ja || '';
+    document.getElementById('hero-title-en').value = data.hero.title_en || '';
+
+    // About
+    document.getElementById('about-ja').value = (data.about.ja || []).join('\n\n');
+    document.getElementById('about-en').value = (data.about.en || []).join('\n\n');
+
+    // Works
+    const wc = document.getElementById('works-container');
+    wc.innerHTML = '';
+    (data.works || []).forEach(w => wc.appendChild(createWorkItem(w)));
+
+    // Career
+    const cc = document.getElementById('career-container');
+    cc.innerHTML = '';
+    (data.career || []).forEach(c => cc.appendChild(createCareerItem(c)));
+
+    // Note
+    document.getElementById('note-url').value = data.note.url || '';
+    document.getElementById('note-label').value = data.note.label || '';
+
+    // Contact
+    document.getElementById('contact-email').value = data.contact.email || '';
+    const lc = document.getElementById('links-container');
+    lc.innerHTML = '';
+    (data.contact.links || []).forEach(l => lc.appendChild(createLinkItem(l)));
+  }
+
+  /* ── Build content JSON from form ── */
+  function buildContentFromForm() {
+    const parseParas = (val) => val.split(/\n\s*\n/).map(s => s.trim()).filter(Boolean);
+
+    const works = [];
+    document.querySelectorAll('#works-container .repeater-item').forEach(item => {
+      works.push({
+        title: item.querySelector('.work-title').value,
+        category: item.querySelector('.work-category').value,
+        description: item.querySelector('.work-desc').value,
+        image: item.querySelector('.work-image-val').value
+      });
+    });
+
+    const career = [];
+    document.querySelectorAll('#career-container .repeater-item').forEach(item => {
+      career.push({
+        year: item.querySelector('.career-year').value,
+        text: item.querySelector('.career-text').value
+      });
+    });
+
+    const links = [];
+    document.querySelectorAll('#links-container .repeater-item').forEach(item => {
+      links.push({
+        label: item.querySelector('.link-label').value,
+        url: item.querySelector('.link-url').value
+      });
+    });
+
+    return {
+      hero: {
+        name_en: document.getElementById('hero-name-en').value,
+        name_ja: document.getElementById('hero-name-ja').value,
+        title_en: document.getElementById('hero-title-en').value
+      },
+      about: {
+        ja: parseParas(document.getElementById('about-ja').value),
+        en: parseParas(document.getElementById('about-en').value)
+      },
+      works: works,
+      career: career,
+      note: {
+        url: document.getElementById('note-url').value,
+        label: document.getElementById('note-label').value
+      },
+      contact: {
+        email: document.getElementById('contact-email').value,
+        links: links
+      }
+    };
+  }
+
+  /* ── Image upload via GitHub API ── */
+  async function uploadImage(file) {
+    const token = localStorage.getItem('gh_token');
+    const owner = document.getElementById('repo-owner').value;
+    const repo = document.getElementById('repo-name').value;
+    const path = `images/${file.name}`;
+
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = async () => {
+        const base64 = reader.result.split(',')[1];
+
+        let sha;
+        try {
+          const existing = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+            headers: { 'Authorization': 'token ' + token }
+          });
+          if (existing.ok) {
+            sha = (await existing.json()).sha;
+          }
+        } catch (e) {}
+
+        const body = {
+          message: `Upload ${file.name}`,
+          content: base64,
+          ...(sha && { sha })
+        };
+
+        try {
+          const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+            method: 'PUT',
+            headers: {
+              'Authorization': 'token ' + token,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+          });
+
+          if (res.ok) {
+            resolve(`images/${file.name}`);
+          } else {
+            showStatus('Image upload failed');
+            resolve(null);
+          }
+        } catch (e) {
+          showStatus('Image upload error');
+          resolve(null);
+        }
+      };
+    });
+  }
+
+  /* ── Save to GitHub ── */
+  async function saveToGitHub() {
+    const token = localStorage.getItem('gh_token');
+    if (!token) { showStatus('Connect to GitHub first'); return; }
+
+    const owner = document.getElementById('repo-owner').value;
+    const repo = document.getElementById('repo-name').value;
+
+    showStatus('Saving...');
+
+    try {
+      // 1. Get current file SHA
+      const fileRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/content.json`, {
+        headers: { 'Authorization': 'token ' + token }
+      });
+      const fileData = await fileRes.json();
+      const sha = fileData.sha;
+
+      // 2. Build content.json from form
+      const content = buildContentFromForm();
+
+      // 3. PUT to update file
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/content.json`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'token ' + token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: 'Update content via CMS',
+          content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))),
+          sha: sha
+        })
+      });
+
+      if (res.ok) {
+        showStatus('Saved successfully');
+      } else {
+        showStatus('Save failed: ' + (await res.json()).message);
+      }
+    } catch (e) {
+      showStatus('Save error: ' + e.message);
+    }
+  }
+
+  /* ── Preview ── */
+  document.getElementById('btn-preview').addEventListener('click', () => {
+    const content = buildContentFromForm();
+    sessionStorage.setItem('preview_content', JSON.stringify(content));
+    window.open('../index.html', '_blank');
+  });
+
+  /* ── Save ── */
+  document.getElementById('btn-save').addEventListener('click', saveToGitHub);
+
+  /* ── Initial load ── */
+  loadContent();
+</script>
+</body>
+</html>

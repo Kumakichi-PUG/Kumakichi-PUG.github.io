@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "name_en": "TakutoOokawa",
+    "name_ja": "大川大空翔",
+    "title_en": "Art Director / Interaction Designer"
+  },
+  "about": {
+    "ja": [
+      "大川 大空翔（Takuto Ookawa） アートディレクター / インタラクションデザイナー",
+      "1993年生まれ。筑波大学大学院修了後、株式会社電通に入社。現在はBXCCおよびDentsu Lab Tokyoに所属。2021年、学術・研究分野を専門とするクリエイティブスタジオ「アラレグミ」を設立。",
+      "近年の活動として、量子コンピュータを活用したシューティングゲームの開発（2025年度 IPA未踏ターゲット事業採択）や、大阪・関西万博「エンタングルモーメント展」における産業技術総合研究所（AIST）の展示ディレクションを担当。同作は東京都現代美術館（MOT）でも展示された。",
+      "アカデミアや先端技術など、社会に伝達すべき価値を持つ領域に対し、デザインを通じた実装とコミットメントを目的として活動している。"
+    ],
+    "en": [
+      "Born in 1993, Takuto Ookawa is a Tokyo-based Art Director at Dentsu Inc., affiliated with BXCC and Dentsu Lab Tokyo. He holds a Master's degree from the University of Tsukuba. In 2021, he founded ARARE STUDIO, a creative studio specializing in the academic and research sectors.",
+      "His recent work includes developing a shooting game utilizing quantum computing (selected for the 2025 IPA Mitou Target program) and directing the AIST exhibition \"Entangled Moments\" for Expo 2025 Osaka, Kansai. This work was subsequently exhibited at the Museum of Contemporary Art Tokyo (MOT).",
+      "His practice is driven by a commitment to utilizing design as a tool to implement and communicate complex academic and technological insights to society."
+    ]
+  },
+  "works": [
+    {
+      "title": "SMART EARTH",
+      "category": "ムーンショット型研究開発 ミレニアプログラム",
+      "description": "専門家同士の会話のためのゲーム",
+      "image": ""
+    },
+    {
+      "title": "THE HOUSE",
+      "category": "トヨタ財団助成金",
+      "description": "生態系を考えるための住宅ゲーム",
+      "image": ""
+    },
+    {
+      "title": "粒子と波動を観測するためのシミュレーター",
+      "category": "Expo 2025",
+      "description": "二重スリット実験を体験するゲーム",
+      "image": ""
+    },
+    {
+      "title": "二重スリット実験を観測するための映像",
+      "category": "Expo 2025",
+      "description": "観測をテーマにしたインスタレーション",
+      "image": ""
+    },
+    {
+      "title": "AFTER・IMAGE",
+      "category": "未踏ターゲット",
+      "description": "量子アニーリングマシンを活用したシューティングゲーム",
+      "image": ""
+    },
+    {
+      "title": "DAY DREAM",
+      "category": "LLM",
+      "description": "LLMを活用したマーダーミステリーアドベンチャーゲーム。ゲームボーイカセット開発",
+      "image": ""
+    }
+  ],
+  "career": [
+    { "year": "2018", "text": "筑波大学大学院 芸術専攻 修了" },
+    { "year": "2018", "text": "株式会社電通 入社（BXCC / Dentsu Lab Tokyo）" },
+    { "year": "2021", "text": "クリエイティブスタジオ「アラレグミ」設立" }
+  ],
+  "note": {
+    "url": "https://scrapbox.io/placeholder",
+    "label": "Notes"
+  },
+  "contact": {
+    "email": "takuto@araregumi.com",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/Kumakichi-PUG" },
+      { "label": "ARARE STUDIO", "url": "https://araregumi.com/" }
+    ]
+  }
+}
