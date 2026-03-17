@@ -438,8 +438,9 @@
       showStatus('Uploading ' + file.name + '...');
       const path = await uploadImage(file);
       if (path) {
-        div.querySelector('.work-image-val').value = file.name;
-        div.querySelector('label').textContent = 'Image (current: ' + file.name + ')';
+        const imgPath = 'images/' + file.name;
+        div.querySelector('.work-image-val').value = imgPath;
+        div.querySelector('label').textContent = 'Image (current: ' + imgPath + ')';
         showStatus('Uploaded ' + file.name);
       }
     });

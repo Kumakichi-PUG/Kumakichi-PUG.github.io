@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const thumb = document.createElement('div');
         thumb.className = 'works__thumb';
         if (work.image) {
-          thumb.style.backgroundImage = `url(images/${work.image})`;
+          thumb.style.backgroundImage = `url(${work.image})`;
           thumb.style.backgroundSize = 'cover';
           thumb.style.backgroundPosition = 'center';
         }
