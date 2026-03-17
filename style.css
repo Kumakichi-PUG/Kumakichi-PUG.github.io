@@ -1,22 +1,35 @@
+/* ========================================
+   Tokens
+   ======================================== */
+
 :root {
-  --color-bg: #B3B3B3;
-  --color-text: #333333;
-  --color-text-light: #666666;
-  --color-border: #E6E6E6;
-  --color-placeholder: #A0A0A0;
-  --font-en: 'Inter', sans-serif;
-  --font-ja: 'Noto Sans JP', sans-serif;
-  --max-width: 820px;
-  --space-section: 120px;
+  --bg: #F5F5F5;
+  --text: #333333;
+  --text-sub: #888888;
+  --rule: #E0E0E0;
+  --surface: #EBEBEB;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+    "Noto Sans JP", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --page-px: 48px;
+  --section-gap: 160px;
 }
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+[data-theme="dark"] {
+  --bg: #111111;
+  --text: #E0E0E0;
+  --text-sub: #777777;
+  --rule: #2A2A2A;
+  --surface: #1A1A1A;
 }
+
+/* ========================================
+   Reset
+   ======================================== */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
   font-size: 16px;
@@ -26,115 +39,139 @@ html {
 }
 
 body {
-  font-family: var(--font-ja);
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.9;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
 }
 
 a {
-  color: var(--color-text);
+  color: var(--text);
   text-decoration: none;
 }
 
-a:hover {
-  opacity: 0.6;
-}
-
 a:focus-visible {
-  outline: 2px solid var(--color-text);
+  outline: 1.5px solid var(--text);
   outline-offset: 3px;
 }
 
-ul {
-  list-style: none;
-}
+ul, dl { list-style: none; }
 
 ::selection {
-  background-color: var(--color-text);
-  color: var(--color-bg);
+  background: var(--text);
+  color: var(--bg);
 }
 
-/* ---- Hero ---- */
+/* ========================================
+   Nav / Theme toggle
+   ======================================== */
+
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  padding: 24px var(--page-px);
+}
+
+.theme-toggle {
+  appearance: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.theme-toggle__icon {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+[data-theme="dark"] .theme-toggle__icon {
+  background: var(--text);
+}
+
+/* ========================================
+   Hero
+   ======================================== */
 
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: flex-end;
-  padding: 0 40px 80px;
-}
-
-.hero__inner {
-  max-width: var(--max-width);
-  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--page-px) 80px;
 }
 
 .hero__name {
+  font-family: var(--font-mono);
+  font-size: clamp(3rem, 9vw, 8rem);
   font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 12px;
 }
 
 .hero__name-ja {
-  display: block;
-  font-family: var(--font-ja);
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 400;
-  letter-spacing: 0.08em;
-}
-
-.hero__name-en {
-  display: block;
-  font-family: var(--font-en);
-  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  font-family: var(--font-sans);
+  font-size: clamp(0.875rem, 1.4vw, 1.125rem);
   font-weight: 300;
-  letter-spacing: 0.12em;
-  color: var(--color-text-light);
-  margin-top: 8px;
+  letter-spacing: 0.15em;
+  color: var(--text-sub);
+  margin-bottom: 24px;
 }
 
 .hero__title {
-  font-family: var(--font-en);
-  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
   font-weight: 300;
-  letter-spacing: 0.08em;
-  color: var(--color-text-light);
+  letter-spacing: 0.04em;
+  color: var(--text-sub);
 }
 
-/* ---- Section (shared) ---- */
+/* ========================================
+   Section (shared)
+   ======================================== */
 
 .section {
-  padding: var(--space-section) 40px;
-  border-top: 1px solid var(--color-border);
-}
-
-.section__inner {
-  max-width: var(--max-width);
+  padding: var(--section-gap) var(--page-px);
+  border-top: 1px solid var(--rule);
 }
 
 .section__heading {
-  font-family: var(--font-en);
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 400;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-text-light);
-  margin-bottom: 48px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 80px;
 }
 
-/* ---- About ---- */
+.section__body {
+  width: 100%;
+}
 
-.about__ja,
-.about__en {
+.section__body--narrow {
   max-width: 640px;
 }
+
+/* ========================================
+   About
+   ======================================== */
 
 .about__ja p,
 .about__en p {
   font-size: 0.9375rem;
   font-weight: 300;
   line-height: 2;
-  margin-bottom: 1em;
+  margin-bottom: 1.2em;
 }
 
 .about__ja p:last-child,
@@ -143,184 +180,149 @@ ul {
 }
 
 .about__en {
-  margin-top: 48px;
-  color: var(--color-text-light);
+  margin-top: 56px;
+  padding-top: 56px;
+  border-top: 1px solid var(--rule);
+  color: var(--text-sub);
 }
 
 .about__en p {
-  font-family: var(--font-en);
   font-size: 0.875rem;
   line-height: 1.9;
 }
 
-/* ---- Works ---- */
+/* ========================================
+   Works
+   ======================================== */
 
 .works {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 64px 40px;
 }
 
 .works__item {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 32px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
 }
 
-.works__thumbnail {
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.works__placeholder {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-placeholder);
-  background-image:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.06) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(255,255,255,0.06) 50%,
-      rgba(255,255,255,0.06) 75%,
-      transparent 75%
-    );
-  background-size: 20px 20px;
+.works__thumb {
+  aspect-ratio: 3 / 2;
+  background: var(--surface);
+  margin-bottom: 20px;
 }
 
 .works__title {
-  font-family: var(--font-ja);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 500;
-  line-height: 1.6;
-  margin-bottom: 4px;
+  line-height: 1.5;
+  margin-bottom: 6px;
 }
 
 .works__desc {
   font-size: 0.8125rem;
   font-weight: 300;
-  line-height: 1.8;
-  color: var(--color-text-light);
+  line-height: 1.7;
+  color: var(--text-sub);
 }
 
-/* ---- Career ---- */
+/* ========================================
+   Career
+   ======================================== */
 
-.career {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.career__item {
+.career__row {
   display: flex;
   gap: 32px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--color-border);
-  font-size: 0.9375rem;
-  font-weight: 300;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
 }
 
-.career__item:first-child {
-  border-top: 1px solid var(--color-border);
+.career__row:first-child {
+  border-top: 1px solid var(--rule);
 }
 
 .career__year {
-  font-family: var(--font-en);
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-weight: 400;
-  letter-spacing: 0.05em;
-  color: var(--color-text-light);
+  color: var(--text-sub);
   flex-shrink: 0;
   width: 48px;
 }
 
-/* ---- Note ---- */
-
-.note__link {
-  font-family: var(--font-en);
+.career__text {
   font-size: 0.9375rem;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  display: inline-block;
-  padding-bottom: 2px;
-  border-bottom: 1px solid var(--color-text);
+  font-weight: 300;
 }
 
-/* ---- Contact ---- */
+/* ========================================
+   Text link
+   ======================================== */
+
+.text-link {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+
+.text-link:hover {
+  border-color: var(--text);
+}
+
+/* ========================================
+   Contact
+   ======================================== */
 
 .contact {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
-.contact li a {
-  font-family: var(--font-en);
-  font-size: 0.9375rem;
-  font-weight: 300;
-  letter-spacing: 0.02em;
-}
-
-/* ---- Footer ---- */
+/* ========================================
+   Footer
+   ======================================== */
 
 .footer {
-  padding: 40px;
-  border-top: 1px solid var(--color-border);
-}
-
-.footer__inner {
-  max-width: var(--max-width);
+  padding: 48px var(--page-px);
+  border-top: 1px solid var(--rule);
 }
 
 .footer p {
-  font-family: var(--font-en);
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 300;
-  letter-spacing: 0.05em;
-  color: var(--color-text-light);
+  color: var(--text-sub);
 }
 
-/* ---- Scroll Animation ---- */
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ---- Responsive ---- */
+/* ========================================
+   Responsive
+   ======================================== */
 
 @media (max-width: 768px) {
   :root {
-    --space-section: 80px;
+    --page-px: 24px;
+    --section-gap: 100px;
   }
 
   .hero {
-    padding: 0 24px 60px;
+    padding-bottom: 56px;
   }
 
-  .section {
-    padding: var(--space-section) 24px;
+  .section__heading {
+    margin-bottom: 56px;
   }
 
-  .works__item {
+  .works {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 48px;
   }
 
-  .works__thumbnail {
-    max-width: 100%;
-  }
-
-  .career__item {
+  .career__row {
     flex-direction: column;
     gap: 4px;
   }
@@ -328,30 +330,15 @@ ul {
   .career__year {
     width: auto;
   }
-
-  .footer {
-    padding: 40px 24px;
-  }
 }
 
 @media (max-width: 480px) {
   :root {
-    --space-section: 60px;
-  }
-
-  .hero {
-    padding: 0 20px 48px;
-  }
-
-  .section {
-    padding: var(--space-section) 20px;
+    --page-px: 20px;
+    --section-gap: 72px;
   }
 
   .section__heading {
-    margin-bottom: 32px;
-  }
-
-  .footer {
-    padding: 32px 20px;
+    margin-bottom: 40px;
   }
 }

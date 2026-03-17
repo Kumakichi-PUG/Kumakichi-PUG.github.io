@@ -7,143 +7,120 @@
   <meta name="description" content="大川大空翔 — アートディレクター / インタラクションデザイナー。デザインを通じた実装とコミットメントを目的として活動。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <nav class="nav">
+    <button class="theme-toggle" type="button" aria-label="カラーテーマ切り替え">
+      <span class="theme-toggle__icon"></span>
+    </button>
+  </nav>
+
   <!-- Hero -->
   <header class="hero">
-    <div class="hero__inner">
-      <h1 class="hero__name">
-        <span class="hero__name-ja">大川大空翔</span>
-        <span class="hero__name-en">TakutoOokawa</span>
-      </h1>
-      <p class="hero__title">Art Director / Interaction Designer</p>
-    </div>
+    <h1 class="hero__name">TakutoOokawa</h1>
+    <p class="hero__name-ja">大川大空翔</p>
+    <p class="hero__title">Art Director / Interaction Designer</p>
   </header>
 
   <main>
 
     <!-- About -->
-    <section id="about" class="section">
-      <div class="section__inner">
-        <h2 class="section__heading">About</h2>
-        <div class="about fade-in">
-          <div class="about__ja">
-            <p>大川 大空翔（Takuto Ookawa） アートディレクター / インタラクションデザイナー</p>
-            <p>1993年生まれ。筑波大学大学院修了後、株式会社電通に入社。現在はBXCCおよびDentsu Lab Tokyoに所属。2021年、学術・研究分野を専門とするクリエイティブスタジオ「アラレグミ」を設立。</p>
-            <p>近年の活動として、量子コンピュータを活用したシューティングゲームの開発（2025年度 IPA未踏ターゲット事業採択）や、大阪・関西万博「エンタングルモーメント展」における産業技術総合研究所（AIST）の展示ディレクションを担当。同作は東京都現代美術館（MOT）でも展示された。</p>
-            <p>アカデミアや先端技術など、社会に伝達すべき価値を持つ領域に対し、デザインを通じた実装とコミットメントを目的として活動している。</p>
-          </div>
-          <div class="about__en">
-            <p>Born in 1993, Takuto Ookawa is a Tokyo-based Art Director at Dentsu Inc., affiliated with BXCC and Dentsu Lab Tokyo. He holds a Master's degree from the University of Tsukuba. In 2021, he founded ARARE STUDIO, a creative studio specializing in the academic and research sectors.</p>
-            <p>His recent work includes developing a shooting game utilizing quantum computing (selected for the 2025 IPA Mitou Target program) and directing the AIST exhibition "Entangled Moments" for Expo 2025 Osaka, Kansai. This work was subsequently exhibited at the Museum of Contemporary Art Tokyo (MOT).</p>
-            <p>His practice is driven by a commitment to utilizing design as a tool to implement and communicate complex academic and technological insights to society.</p>
-          </div>
+    <section class="section" id="about">
+      <h2 class="section__heading">About</h2>
+      <div class="section__body section__body--narrow">
+        <div class="about__ja">
+          <p>大川 大空翔（Takuto Ookawa）</p>
+          <p>アートディレクター / インタラクションデザイナー</p>
+          <p>1993年生まれ。筑波大学大学院修了後、株式会社電通に入社。現在はBXCCおよびDentsu Lab Tokyoに所属。2021年、学術・研究分野を専門とするクリエイティブスタジオ「アラレグミ」を設立。</p>
+          <p>近年の活動として、量子コンピュータを活用したシューティングゲームの開発（2025年度 IPA未踏ターゲット事業採択）や、大阪・関西万博「エンタングルモーメント展」における産業技術総合研究所（AIST）の展示ディレクションを担当。同作は東京都現代美術館（MOT）でも展示された。</p>
+          <p>アカデミアや先端技術など、社会に伝達すべき価値を持つ領域に対し、デザインを通じた実装とコミットメントを目的として活動している。</p>
+        </div>
+        <div class="about__en">
+          <p>Born in 1993, Takuto Ookawa is a Tokyo-based Art Director at Dentsu Inc., affiliated with BXCC and Dentsu Lab Tokyo. He holds a Master's degree from the University of Tsukuba. In 2021, he founded ARARE STUDIO, a creative studio specializing in the academic and research sectors.</p>
+          <p>His recent work includes developing a shooting game utilizing quantum computing (selected for the 2025 IPA Mitou Target program) and directing the AIST exhibition "Entangled Moments" for Expo 2025 Osaka, Kansai. This work was subsequently exhibited at the Museum of Contemporary Art Tokyo (MOT).</p>
+          <p>His practice is driven by a commitment to utilizing design as a tool to implement and communicate complex academic and technological insights to society.</p>
         </div>
       </div>
     </section>
 
     <!-- Works -->
-    <section id="works" class="section">
-      <div class="section__inner">
-        <h2 class="section__heading">Works</h2>
-        <ul class="works fade-in">
+    <section class="section" id="works">
+      <h2 class="section__heading">Works</h2>
+      <div class="section__body">
+        <ul class="works">
           <li class="works__item">
-            <div class="works__thumbnail">
-              <span class="works__placeholder"></span>
-            </div>
-            <div class="works__info">
-              <h3 class="works__title">SMART EARTH</h3>
-              <p class="works__desc">ムーンショット型研究開発 ミレニアプログラム。専門家同士の会話のためのゲーム</p>
-            </div>
+            <div class="works__thumb"></div>
+            <h3 class="works__title">SMART EARTH</h3>
+            <p class="works__desc">ムーンショット型研究開発 ミレニアプログラム。専門家同士の会話のためのゲーム</p>
           </li>
           <li class="works__item">
-            <div class="works__thumbnail">
-              <span class="works__placeholder"></span>
-            </div>
-            <div class="works__info">
-              <h3 class="works__title">THE HOUSE</h3>
-              <p class="works__desc">トヨタ財団助成金。生態系を考えるための住宅ゲーム</p>
-            </div>
+            <div class="works__thumb"></div>
+            <h3 class="works__title">THE HOUSE</h3>
+            <p class="works__desc">トヨタ財団助成金。生態系を考えるための住宅ゲーム</p>
           </li>
           <li class="works__item">
-            <div class="works__thumbnail">
-              <span class="works__placeholder"></span>
-            </div>
-            <div class="works__info">
-              <h3 class="works__title">粒子と波動を観測するためのシミュレーター</h3>
-              <p class="works__desc">Expo 2025。二重スリット実験を体験するゲーム</p>
-            </div>
+            <div class="works__thumb"></div>
+            <h3 class="works__title">粒子と波動を観測するためのシミュレーター</h3>
+            <p class="works__desc">Expo 2025。二重スリット実験を体験するゲーム</p>
           </li>
           <li class="works__item">
-            <div class="works__thumbnail">
-              <span class="works__placeholder"></span>
-            </div>
-            <div class="works__info">
-              <h3 class="works__title">二重スリット実験を観測するための映像</h3>
-              <p class="works__desc">Expo 2025。観測をテーマにしたインスタレーション</p>
-            </div>
+            <div class="works__thumb"></div>
+            <h3 class="works__title">二重スリット実験を観測するための映像</h3>
+            <p class="works__desc">Expo 2025。観測をテーマにしたインスタレーション</p>
           </li>
           <li class="works__item">
-            <div class="works__thumbnail">
-              <span class="works__placeholder"></span>
-            </div>
-            <div class="works__info">
-              <h3 class="works__title">AFTER・IMAGE</h3>
-              <p class="works__desc">未踏ターゲット。量子アニーリングマシンを活用したシューティングゲーム</p>
-            </div>
+            <div class="works__thumb"></div>
+            <h3 class="works__title">AFTER・IMAGE</h3>
+            <p class="works__desc">未踏ターゲット。量子アニーリングマシンを活用したシューティングゲーム</p>
           </li>
           <li class="works__item">
-            <div class="works__thumbnail">
-              <span class="works__placeholder"></span>
-            </div>
-            <div class="works__info">
-              <h3 class="works__title">DAY DREAM</h3>
-              <p class="works__desc">LLMを活用したマーダーミステリーアドベンチャーゲーム。ゲームボーイカセット開発</p>
-            </div>
+            <div class="works__thumb"></div>
+            <h3 class="works__title">DAY DREAM</h3>
+            <p class="works__desc">LLMを活用したマーダーミステリーアドベンチャーゲーム。ゲームボーイカセット開発</p>
           </li>
         </ul>
       </div>
     </section>
 
     <!-- Career -->
-    <section id="career" class="section">
-      <div class="section__inner">
-        <h2 class="section__heading">Career</h2>
-        <ul class="career fade-in">
-          <li class="career__item">
-            <span class="career__year">2018</span>
-            <span class="career__text">筑波大学大学院 芸術専攻 修了</span>
-          </li>
-          <li class="career__item">
-            <span class="career__year">2018</span>
-            <span class="career__text">株式会社電通 入社（BXCC / Dentsu Lab Tokyo）</span>
-          </li>
-          <li class="career__item">
-            <span class="career__year">2021</span>
-            <span class="career__text">クリエイティブスタジオ「アラレグミ」設立</span>
-          </li>
-        </ul>
+    <section class="section" id="career">
+      <h2 class="section__heading">Career</h2>
+      <div class="section__body section__body--narrow">
+        <dl class="career">
+          <div class="career__row">
+            <dt class="career__year">2018</dt>
+            <dd class="career__text">筑波大学大学院 芸術専攻 修了</dd>
+          </div>
+          <div class="career__row">
+            <dt class="career__year">2018</dt>
+            <dd class="career__text">株式会社電通 入社（BXCC / Dentsu Lab Tokyo）</dd>
+          </div>
+          <div class="career__row">
+            <dt class="career__year">2021</dt>
+            <dd class="career__text">クリエイティブスタジオ「アラレグミ」設立</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
     <!-- Note -->
-    <section id="note" class="section">
-      <div class="section__inner">
-        <h2 class="section__heading">Note</h2>
-        <a href="https://scrapbox.io/placeholder" class="note__link fade-in" target="_blank" rel="noopener noreferrer">Notes →</a>
+    <section class="section" id="note">
+      <h2 class="section__heading">Note</h2>
+      <div class="section__body section__body--narrow">
+        <a href="https://scrapbox.io/placeholder" class="text-link" target="_blank" rel="noopener noreferrer">Notes &rarr;</a>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="section__inner">
-        <h2 class="section__heading">Contact</h2>
-        <ul class="contact fade-in">
-          <li><a href="mailto:takuto@araregumi.com">takuto@araregumi.com</a></li>
-          <li><a href="https://github.com/Kumakichi-PUG" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    <section class="section" id="contact">
+      <h2 class="section__heading">Contact</h2>
+      <div class="section__body section__body--narrow">
+        <ul class="contact">
+          <li><a href="mailto:takuto@araregumi.com" class="text-link">takuto@araregumi.com</a></li>
+          <li><a href="https://github.com/Kumakichi-PUG" class="text-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </div>
     </section>
@@ -151,9 +128,7 @@
   </main>
 
   <footer class="footer">
-    <div class="footer__inner">
-      <p>&copy; 2026 TakutoOokawa</p>
-    </div>
+    <p>&copy; 2026 TakutoOokawa</p>
   </footer>
 
   <script src="main.js"></script>
