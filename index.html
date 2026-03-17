@@ -3,163 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TakutoOokawa | Art Director / Design Engineer</title>
-  <meta name="description" content="ゲームとコミュニケーションの関係性を主軸にした研究的関心や試作を紹介するポートフォリオサイト">
+  <title>TakutoOokawa | Art Director / Interaction Designer</title>
+  <meta name="description" content="大川大空翔 — アートディレクター / インタラクションデザイナー。デザインを通じた実装とコミットメントを目的として活動。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Particle Background Canvas -->
-  <canvas id="bg-canvas" aria-hidden="true"></canvas>
-
-  <!-- Navigation -->
-  <nav class="nav" data-animate="fade-in" aria-label="メインナビゲーション">
-    <div class="nav__inner">
-      <a href="#" class="nav__logo">TO</a>
-      <ul class="nav__links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
   <!-- Hero -->
-  <header id="hero" class="hero" data-section="hero">
-    <div class="hero__content" data-animate="slide-up">
-      <p class="hero__label">Art Director / Design Engineer</p>
+  <header class="hero">
+    <div class="hero__inner">
       <h1 class="hero__name">
-        <span class="hero__name-en">TakutoOokawa</span>
         <span class="hero__name-ja">大川大空翔</span>
+        <span class="hero__name-en">TakutoOokawa</span>
       </h1>
-      <p class="hero__intro typing-text" data-animate="slide-up" data-delay="200">
-        遊びとインタラクションを通じて、<br class="sp-only">
-        他者理解と関係性の生成を探る。
-      </p>
-    </div>
-    <div class="hero__scroll" data-animate="fade-in" data-delay="600">
-      <span class="hero__scroll-text">Scroll</span>
-      <span class="hero__scroll-line"></span>
+      <p class="hero__title">Art Director / Interaction Designer</p>
     </div>
   </header>
 
-  <!-- Main Content -->
   <main>
 
-  <!-- About -->
-  <section id="about" class="section about" data-section="about">
-    <div class="section__inner">
-      <h2 class="section__heading" data-animate="slide-up">
-        <span class="section__heading-en">About</span>
-      </h2>
-      <div class="about__content" data-animate="slide-up" data-delay="100">
-        <div class="about__text">
-          <p class="about__lead">
-            ゲームとコミュニケーションの関係性を主軸に、<wbr>研究的関心や試作、思考過程を蓄積・可視化する。
-          </p>
-          <p class="about__description">
-            完成された成果物の展示ではなく、GitHubを通じて制作物や実験的プロジェクトを継続的に管理・公開し、自分自身のための記録として機能させる。遊びやインタラクションがどのように他者理解や関係性の生成に寄与するのかを探る過程そのものを扱う。
-          </p>
-        </div>
-        <div class="about__keywords" data-animate="slide-up" data-delay="200">
-          <h3 class="about__keywords-title">Keywords</h3>
-          <ul class="about__keywords-list">
-            <li data-keyword>Game Design</li>
-            <li data-keyword>Communication</li>
-            <li data-keyword>Interaction</li>
-            <li data-keyword>Relationship</li>
-            <li data-keyword>Experimental Project</li>
-          </ul>
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="section__inner">
+        <h2 class="section__heading">About</h2>
+        <div class="about fade-in">
+          <div class="about__ja">
+            <p>大川 大空翔（Takuto Ookawa） アートディレクター / インタラクションデザイナー</p>
+            <p>1993年生まれ。筑波大学大学院修了後、株式会社電通に入社。現在はBXCCおよびDentsu Lab Tokyoに所属。2021年、学術・研究分野を専門とするクリエイティブスタジオ「アラレグミ」を設立。</p>
+            <p>近年の活動として、量子コンピュータを活用したシューティングゲームの開発（2025年度 IPA未踏ターゲット事業採択）や、大阪・関西万博「エンタングルモーメント展」における産業技術総合研究所（AIST）の展示ディレクションを担当。同作は東京都現代美術館（MOT）でも展示された。</p>
+            <p>アカデミアや先端技術など、社会に伝達すべき価値を持つ領域に対し、デザインを通じた実装とコミットメントを目的として活動している。</p>
+          </div>
+          <div class="about__en">
+            <p>Born in 1993, Takuto Ookawa is a Tokyo-based Art Director at Dentsu Inc., affiliated with BXCC and Dentsu Lab Tokyo. He holds a Master's degree from the University of Tsukuba. In 2021, he founded ARARE STUDIO, a creative studio specializing in the academic and research sectors.</p>
+            <p>His recent work includes developing a shooting game utilizing quantum computing (selected for the 2025 IPA Mitou Target program) and directing the AIST exhibition "Entangled Moments" for Expo 2025 Osaka, Kansai. This work was subsequently exhibited at the Museum of Contemporary Art Tokyo (MOT).</p>
+            <p>His practice is driven by a commitment to utilizing design as a tool to implement and communicate complex academic and technological insights to society.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Works -->
-  <section id="works" class="section works" data-section="works">
-    <div class="section__inner">
-      <h2 class="section__heading" data-animate="slide-up">
-        <span class="section__heading-en">Works</span>
-      </h2>
-      <div class="works__grid" data-animate="stagger">
-        <article class="works__card" data-card data-animate="slide-up" data-delay="0">
-          <div class="works__card-thumbnail" data-placeholder>
-            <span class="works__card-number">01</span>
-          </div>
-          <div class="works__card-info">
-            <h3 class="works__card-title">Project Title</h3>
-            <p class="works__card-category">Game Design / Research</p>
-            <p class="works__card-description">プロジェクトの概要がここに入ります。ゲームデザインとコミュニケーションの関係性を探る実験的プロジェクト。</p>
-          </div>
-        </article>
-        <article class="works__card" data-card data-animate="slide-up" data-delay="100">
-          <div class="works__card-thumbnail" data-placeholder>
-            <span class="works__card-number">02</span>
-          </div>
-          <div class="works__card-info">
-            <h3 class="works__card-title">Project Title</h3>
-            <p class="works__card-category">Interactive Installation</p>
-            <p class="works__card-description">プロジェクトの概要がここに入ります。インタラクティブな体験を通じた他者理解の試み。</p>
-          </div>
-        </article>
-        <article class="works__card" data-card data-animate="slide-up" data-delay="200">
-          <div class="works__card-thumbnail" data-placeholder>
-            <span class="works__card-number">03</span>
-          </div>
-          <div class="works__card-info">
-            <h3 class="works__card-title">Project Title</h3>
-            <p class="works__card-category">Prototype / Experiment</p>
-            <p class="works__card-description">プロジェクトの概要がここに入ります。遊びの構造とコミュニケーション生成の関係を検証するプロトタイプ。</p>
-          </div>
-        </article>
-        <article class="works__card" data-card data-animate="slide-up" data-delay="300">
-          <div class="works__card-thumbnail" data-placeholder>
-            <span class="works__card-number">04</span>
-          </div>
-          <div class="works__card-info">
-            <h3 class="works__card-title">Project Title</h3>
-            <p class="works__card-category">Research / Writing</p>
-            <p class="works__card-description">プロジェクトの概要がここに入ります。ゲームにおける関係性デザインの考察と記録。</p>
-          </div>
-        </article>
+    <!-- Works -->
+    <section id="works" class="section">
+      <div class="section__inner">
+        <h2 class="section__heading">Works</h2>
+        <ul class="works fade-in">
+          <li class="works__item">
+            <div class="works__thumbnail">
+              <span class="works__placeholder"></span>
+            </div>
+            <div class="works__info">
+              <h3 class="works__title">SMART EARTH</h3>
+              <p class="works__desc">ムーンショット型研究開発 ミレニアプログラム。専門家同士の会話のためのゲーム</p>
+            </div>
+          </li>
+          <li class="works__item">
+            <div class="works__thumbnail">
+              <span class="works__placeholder"></span>
+            </div>
+            <div class="works__info">
+              <h3 class="works__title">THE HOUSE</h3>
+              <p class="works__desc">トヨタ財団助成金。生態系を考えるための住宅ゲーム</p>
+            </div>
+          </li>
+          <li class="works__item">
+            <div class="works__thumbnail">
+              <span class="works__placeholder"></span>
+            </div>
+            <div class="works__info">
+              <h3 class="works__title">粒子と波動を観測するためのシミュレーター</h3>
+              <p class="works__desc">Expo 2025。二重スリット実験を体験するゲーム</p>
+            </div>
+          </li>
+          <li class="works__item">
+            <div class="works__thumbnail">
+              <span class="works__placeholder"></span>
+            </div>
+            <div class="works__info">
+              <h3 class="works__title">二重スリット実験を観測するための映像</h3>
+              <p class="works__desc">Expo 2025。観測をテーマにしたインスタレーション</p>
+            </div>
+          </li>
+          <li class="works__item">
+            <div class="works__thumbnail">
+              <span class="works__placeholder"></span>
+            </div>
+            <div class="works__info">
+              <h3 class="works__title">AFTER・IMAGE</h3>
+              <p class="works__desc">未踏ターゲット。量子アニーリングマシンを活用したシューティングゲーム</p>
+            </div>
+          </li>
+          <li class="works__item">
+            <div class="works__thumbnail">
+              <span class="works__placeholder"></span>
+            </div>
+            <div class="works__info">
+              <h3 class="works__title">DAY DREAM</h3>
+              <p class="works__desc">LLMを活用したマーダーミステリーアドベンチャーゲーム。ゲームボーイカセット開発</p>
+            </div>
+          </li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section contact" data-section="contact">
-    <div class="section__inner">
-      <h2 class="section__heading" data-animate="slide-up">
-        <span class="section__heading-en">Contact</span>
-      </h2>
-      <div class="contact__content" data-animate="slide-up" data-delay="100">
-        <p class="contact__text">
-          お仕事のご依頼・ご相談など、<br>
-          お気軽にご連絡ください。
-        </p>
-        <div class="contact__links">
-          <a href="https://github.com/Kumakichi-PUG" class="contact__link" data-link="github" target="_blank" rel="noopener noreferrer">
-            <span class="contact__link-label">GitHub</span>
-            <span class="contact__link-arrow">&rarr;</span>
-          </a>
-          <a href="mailto:your-email@example.com" class="contact__link" data-link="email">
-            <span class="contact__link-label">Email</span>
-            <span class="contact__link-arrow">&rarr;</span>
-          </a>
-        </div>
+    <!-- Career -->
+    <section id="career" class="section">
+      <div class="section__inner">
+        <h2 class="section__heading">Career</h2>
+        <ul class="career fade-in">
+          <li class="career__item">
+            <span class="career__year">2018</span>
+            <span class="career__text">筑波大学大学院 芸術専攻 修了</span>
+          </li>
+          <li class="career__item">
+            <span class="career__year">2018</span>
+            <span class="career__text">株式会社電通 入社（BXCC / Dentsu Lab Tokyo）</span>
+          </li>
+          <li class="career__item">
+            <span class="career__year">2021</span>
+            <span class="career__text">クリエイティブスタジオ「アラレグミ」設立</span>
+          </li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Note -->
+    <section id="note" class="section">
+      <div class="section__inner">
+        <h2 class="section__heading">Note</h2>
+        <a href="https://scrapbox.io/placeholder" class="note__link fade-in" target="_blank" rel="noopener noreferrer">Notes →</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="section__inner">
+        <h2 class="section__heading">Contact</h2>
+        <ul class="contact fade-in">
+          <li><a href="mailto:takuto@araregumi.com">takuto@araregumi.com</a></li>
+          <li><a href="https://github.com/Kumakichi-PUG" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </div>
+    </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="footer" data-section="footer">
+  <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__copyright">&copy; 2026 TakutoOokawa. All rights reserved.</p>
+      <p>&copy; 2026 TakutoOokawa</p>
     </div>
   </footer>
 
