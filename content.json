@@ -22,37 +22,37 @@
       "title": "THE HOUSE",
       "category": "トヨタ財団助成金",
       "description": "生態系を考えるための住宅ゲーム",
-      "image": "all_box.jpg"
+      "image": "images/all_box.jpg"
     },
     {
       "title": "SMART EARTH",
       "category": "ムーンショット型研究開発 ミレニアプログラム",
       "description": "専門家同士の会話のためのゲーム",
-      "image": "araregumi_230717_0047.jpg"
+      "image": "images/araregumi_230717_0047.jpg"
     },
     {
       "title": "粒子と波動を観測するためのシミュレーター",
       "category": "Expo 2025",
       "description": "二重スリット実験を体験するゲーム",
-      "image": "entangle_moment_0008.png"
+      "image": "images/entangle_moment_0008.png"
     },
     {
       "title": "二重スリット実験を観測するための映像",
       "category": "Expo 2025",
       "description": "観測をテーマにしたインスタレーション",
-      "image": "entangle_moment_0036.png"
+      "image": "images/entangle_moment_0036.png"
     },
     {
       "title": "AFTER・IMAGE",
       "category": "未踏ターゲット",
       "description": "量子アニーリングマシンを活用したシューティングゲーム",
-      "image": "screenshot_260121_053244.png"
+      "image": "images/screenshot_260121_053244.png"
     },
     {
       "title": "DAY DREAM",
       "category": "LLM",
       "description": "LLMを活用したマーダーミステリーアドベンチャーゲーム。ゲームボーイカセット開発",
-      "image": "251213_KV+OP_FIX.svg"
+      "image": "images/251213_KV+OP_FIX.svg"
     }
   ],
   "career": [

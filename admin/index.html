@@ -597,11 +597,16 @@
 
     const works = [];
     document.querySelectorAll('#works-container .repeater-item').forEach(item => {
+      const rawImg = item.querySelector('.work-image-val').value.trim();
+      let img = rawImg;
+      if (img && !img.startsWith('images/')) {
+        img = 'images/' + img;
+      }
       works.push({
         title: item.querySelector('.work-title').value,
         category: item.querySelector('.work-category').value,
         description: item.querySelector('.work-desc').value,
-        image: item.querySelector('.work-image-val').value
+        image: img
       });
     });
 
