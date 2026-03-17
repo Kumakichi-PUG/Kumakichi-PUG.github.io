@@ -1,5 +1,5 @@
 /* ========================================
-   Tokens
+   Design System Tokens
    ======================================== */
 
 :root {
@@ -9,12 +9,12 @@
   --rule: #E0E0E0;
   --surface: #EBEBEB;
 
-  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
-    "Noto Sans JP", "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font: "M PLUS 2", sans-serif;
+  --weight-heading: 400;
+  --weight-body: 200;
 
   --page-px: 48px;
-  --section-gap: 160px;
+  --section-gap: 140px;
 }
 
 [data-theme="dark"] {
@@ -32,17 +32,18 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-  font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: var(--weight-body);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.8;
+  line-height: 2;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -53,7 +54,7 @@ a {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 1.5px solid var(--text);
+  outline: 1px solid var(--text);
   outline-offset: 3px;
 }
 
@@ -81,17 +82,17 @@ ul, dl { list-style: none; }
   border: none;
   background: none;
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   position: relative;
 }
 
 .theme-toggle__icon {
   display: block;
-  width: 14px;
-  height: 14px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  border: 1.5px solid var(--text);
+  border: 1px solid var(--text);
   transition: background 0.3s, border-color 0.3s;
 }
 
@@ -112,28 +113,25 @@ ul, dl { list-style: none; }
 }
 
 .hero__name {
-  font-family: var(--font-mono);
-  font-size: clamp(3rem, 9vw, 8rem);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin-bottom: 12px;
+  font-size: 10px;
+  font-weight: var(--weight-heading);
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  margin-bottom: 4px;
 }
 
 .hero__name-ja {
-  font-family: var(--font-sans);
-  font-size: clamp(0.875rem, 1.4vw, 1.125rem);
-  font-weight: 300;
+  font-size: 10px;
+  font-weight: var(--weight-body);
   letter-spacing: 0.15em;
   color: var(--text-sub);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .hero__title {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 300;
-  letter-spacing: 0.04em;
+  font-size: 10px;
+  font-weight: var(--weight-body);
+  letter-spacing: 0.06em;
   color: var(--text-sub);
 }
 
@@ -147,12 +145,11 @@ ul, dl { list-style: none; }
 }
 
 .section__heading {
-  font-family: var(--font-mono);
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 80px;
+  font-size: 10px;
+  font-weight: var(--weight-heading);
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  margin-bottom: 64px;
 }
 
 .section__body {
@@ -169,10 +166,10 @@ ul, dl { list-style: none; }
 
 .about__ja p,
 .about__en p {
-  font-size: 0.9375rem;
-  font-weight: 300;
-  line-height: 2;
-  margin-bottom: 1.2em;
+  font-size: 10px;
+  font-weight: var(--weight-body);
+  line-height: 2.4;
+  margin-bottom: 1.6em;
 }
 
 .about__ja p:last-child,
@@ -181,15 +178,10 @@ ul, dl { list-style: none; }
 }
 
 .about__en {
-  margin-top: 56px;
-  padding-top: 56px;
+  margin-top: 48px;
+  padding-top: 48px;
   border-top: 1px solid var(--rule);
   color: var(--text-sub);
-}
-
-.about__en p {
-  font-size: 0.875rem;
-  line-height: 1.9;
 }
 
 /* ========================================
@@ -199,7 +191,7 @@ ul, dl { list-style: none; }
 .works {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 64px 40px;
+  gap: 56px 40px;
 }
 
 .works__item {
@@ -210,7 +202,7 @@ ul, dl { list-style: none; }
 .works__thumb {
   aspect-ratio: 3 / 2;
   background: var(--surface);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   overflow: hidden;
   transition: filter 0.3s;
 }
@@ -231,25 +223,23 @@ ul, dl { list-style: none; }
 }
 
 .works__title {
-  font-size: 0.9375rem;
-  font-weight: 500;
-  line-height: 1.5;
-  margin-bottom: 4px;
+  font-size: 10px;
+  font-weight: var(--weight-heading);
+  line-height: 1.8;
+  margin-bottom: 2px;
 }
 
 .works__cat {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.03em;
+  font-size: 10px;
+  font-weight: var(--weight-body);
   color: var(--text-sub);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .works__desc {
-  font-size: 0.8125rem;
-  font-weight: 300;
-  line-height: 1.7;
+  font-size: 10px;
+  font-weight: var(--weight-body);
+  line-height: 2;
   color: var(--text-sub);
 }
 
@@ -259,8 +249,8 @@ ul, dl { list-style: none; }
 
 .career__row {
   display: flex;
-  gap: 32px;
-  padding: 20px 0;
+  gap: 24px;
+  padding: 16px 0;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -269,17 +259,16 @@ ul, dl { list-style: none; }
 }
 
 .career__year {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 400;
+  font-size: 10px;
+  font-weight: var(--weight-heading);
   color: var(--text-sub);
   flex-shrink: 0;
-  width: 48px;
+  width: 40px;
 }
 
 .career__text {
-  font-size: 0.9375rem;
-  font-weight: 300;
+  font-size: 10px;
+  font-weight: var(--weight-body);
 }
 
 /* ========================================
@@ -287,12 +276,11 @@ ul, dl { list-style: none; }
    ======================================== */
 
 .text-link {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-size: 10px;
+  font-weight: var(--weight-heading);
+  letter-spacing: 0.04em;
   border-bottom: 1px solid var(--rule);
-  padding-bottom: 2px;
+  padding-bottom: 1px;
   transition: border-color 0.2s;
 }
 
@@ -307,7 +295,7 @@ ul, dl { list-style: none; }
 .contact {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 /* ========================================
@@ -320,9 +308,8 @@ ul, dl { list-style: none; }
 }
 
 .footer p {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 300;
+  font-size: 10px;
+  font-weight: var(--weight-body);
   color: var(--text-sub);
 }
 
@@ -341,17 +328,17 @@ ul, dl { list-style: none; }
   }
 
   .section__heading {
-    margin-bottom: 56px;
+    margin-bottom: 48px;
   }
 
   .works {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
 
   .career__row {
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
   }
 
   .career__year {
@@ -362,10 +349,10 @@ ul, dl { list-style: none; }
 @media (max-width: 480px) {
   :root {
     --page-px: 20px;
-    --section-gap: 72px;
+    --section-gap: 80px;
   }
 
   .section__heading {
-    margin-bottom: 40px;
+    margin-bottom: 36px;
   }
 }
