@@ -2,11 +2,11 @@
   "hero": {
     "name_en": "TakutoOokawa",
     "name_ja": "大川大空翔",
-    "title_en": "Art Director / Interaction Designer"
+    "title_en": "Art Director / Design Engineer"
   },
   "about": {
     "ja": [
-      "大川 大空翔（Takuto Ookawa） アートディレクター / インタラクションデザイナー",
+      "大川 大空翔（Takuto Ookawa） アートディレクター / デザインエンジニア",
       "1993年生まれ。筑波大学大学院修了後、株式会社電通に入社。現在はBXCCおよびDentsu Lab Tokyoに所属。2021年、学術・研究分野を専門とするクリエイティブスタジオ「アラレグミ」を設立。",
       "近年の活動として、量子コンピュータを活用したシューティングゲームの開発（2025年度 IPA未踏ターゲット事業採択）や、大阪・関西万博「エンタングルモーメント展」における産業技術総合研究所（AIST）の展示ディレクションを担当。同作は東京都現代美術館（MOT）でも展示された。",
       "アカデミアや先端技術など、社会に伝達すべき価値を持つ領域に対し、デザインを通じた実装とコミットメントを目的として活動している。"
@@ -19,56 +19,67 @@
   },
   "works": [
     {
-      "title": "SMART EARTH",
-      "category": "ムーンショット型研究開発 ミレニアプログラム",
-      "description": "専門家同士の会話のためのゲーム",
-      "image": ""
-    },
-    {
       "title": "THE HOUSE",
       "category": "トヨタ財団助成金",
       "description": "生態系を考えるための住宅ゲーム",
       "image": ""
     },
     {
+      "title": "SMART EARTH",
+      "category": "ムーンショット型研究開発 ミレニアプログラム",
+      "description": "専門家同士の会話のためのゲーム",
+      "image": "araregumi_230717_0047.jpg"
+    },
+    {
       "title": "粒子と波動を観測するためのシミュレーター",
       "category": "Expo 2025",
       "description": "二重スリット実験を体験するゲーム",
-      "image": ""
+      "image": "entangle_moment_0008.png"
     },
     {
       "title": "二重スリット実験を観測するための映像",
       "category": "Expo 2025",
       "description": "観測をテーマにしたインスタレーション",
-      "image": ""
+      "image": "entangle_moment_0036.png"
     },
     {
       "title": "AFTER・IMAGE",
       "category": "未踏ターゲット",
       "description": "量子アニーリングマシンを活用したシューティングゲーム",
-      "image": ""
+      "image": "screenshot_260121_053244.png"
     },
     {
       "title": "DAY DREAM",
       "category": "LLM",
       "description": "LLMを活用したマーダーミステリーアドベンチャーゲーム。ゲームボーイカセット開発",
-      "image": ""
+      "image": "251213_KV+OP_FIX.svg"
     }
   ],
   "career": [
-    { "year": "2018", "text": "筑波大学大学院 芸術専攻 修了" },
-    { "year": "2018", "text": "株式会社電通 入社（BXCC / Dentsu Lab Tokyo）" },
-    { "year": "2021", "text": "クリエイティブスタジオ「アラレグミ」設立" }
+    {
+      "year": "2018",
+      "text": "筑波大学大学院 芸術専攻 修了"
+    },
+    {
+      "year": "2018",
+      "text": "株式会社電通 入社（BXCC / Dentsu Lab Tokyo）"
+    },
+    {
+      "year": "2021",
+      "text": "アラレグミ 設立"
+    }
   ],
   "note": {
     "url": "https://scrapbox.io/placeholder",
-    "label": "Notes"
+    "label": "Text"
   },
   "contact": {
     "email": "takuto@araregumi.com",
     "links": [
-      { "label": "GitHub", "url": "https://github.com/Kumakichi-PUG" },
-      { "label": "ARARE STUDIO", "url": "https://araregumi.com/" }
+      {
+        "label": "ARARE STUDIO",
+        "url": "https://araregumi.com/"
+      }
     ]
   }
 }
